@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ListaComidas {
+public class ListaComidas implements Iterable<Comida> {
 
 //	private ArrayList<PlatoPrincipal> platos_principales;
 //	private ArrayList<Bebida> bebidas;
@@ -35,6 +35,11 @@ public class ListaComidas {
 
 	public Iterator<Comida> iterador() {
 		return comidas.listIterator();
+	}
+
+	@Override
+	public Iterator<Comida> iterator() {
+		return comidas.iterator();
 	}
 
 }
