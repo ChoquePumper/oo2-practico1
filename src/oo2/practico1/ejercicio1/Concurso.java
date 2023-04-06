@@ -16,6 +16,7 @@ public class Concurso {
 	public Concurso(LocalDateTime fechaDeInicio, LocalDateTime fechaDeFin) {
 		this.fechaDeInicio = fechaDeInicio;
 		this.fechaDeFin = fechaDeFin;
+		this.participantes = new ArrayList<Participante>();
 
 		this.cacheFechaLimitePrimerDia = fechaDeInicio.plusDays(1);
 	}

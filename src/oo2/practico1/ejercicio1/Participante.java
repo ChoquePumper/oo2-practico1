@@ -11,6 +11,7 @@ public class Participante {
 		Objects.requireNonNull(nombre);
 		if (nombre.isBlank())
 			throw new IllegalArgumentException();
+		this.nombre = nombre;
 		this.puntos = 0;
 	}
 
@@ -18,7 +19,7 @@ public class Participante {
 		this.puntos += puntos;
 	}
 
-	int getPuntos() {
+	public int getPuntos() {
 		return this.puntos;
 	}
 
