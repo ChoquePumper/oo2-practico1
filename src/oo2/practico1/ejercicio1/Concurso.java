@@ -8,14 +8,14 @@ import oo2.practico1.ejercicio1.exceptions.FueraDeTerminoException;
 public class Concurso {
 
 	private ArrayList<Participante> participantes;
-	private LocalDateTime fechaDeInicio;
-	private LocalDateTime fechaDeFin;
+	private LocalDateTime fechaDeInicioInscripcion;
+	private LocalDateTime fechaDeFinInscripcion;
 	// Cache
 	private LocalDateTime cacheFechaLimitePrimerDia;
 
 	public Concurso(LocalDateTime fechaDeInicio, LocalDateTime fechaDeFin) {
-		this.fechaDeInicio = fechaDeInicio;
-		this.fechaDeFin = fechaDeFin;
+		this.fechaDeInicioInscripcion = fechaDeInicio;
+		this.fechaDeFinInscripcion = fechaDeFin;
 		this.participantes = new ArrayList<Participante>();
 
 		this.cacheFechaLimitePrimerDia = fechaDeInicio.plusDays(1);
@@ -34,16 +34,16 @@ public class Concurso {
 		if (enPrimerDia(fecha))
 			participante.agregarPuntos(+10);
 
-		// [29/03/2023] Enviar mail aquí? Sí. (si puede grabar)
+		// [29/03/2023] TODO: Enviar mail aquí? Sí. (si puede grabar)
 	}
 
 	public boolean enPrimerDia(LocalDateTime fecha) {
 		// fechaDeInicio <= fecha < cacheFechaLimitePrimerDia
-		return (!fecha.isBefore(fechaDeInicio)) && fecha.isBefore(cacheFechaLimitePrimerDia);
+		return (!fecha.isBefore(fechaDeInicioInscripcion)) && fecha.isBefore(cacheFechaLimitePrimerDia);
 	}
 
 	public boolean enElPeriodoDeInscripcion(LocalDateTime fecha) {
 		// fechaDeInicio <= fecha < fechaDeFin
-		return (!fecha.isBefore(fechaDeInicio)) && fecha.isBefore(fechaDeFin);
+		return (!fecha.isBefore(fechaDeInicioInscripcion)) && fecha.isBefore(fechaDeFinInscripcion);
 	}
 }

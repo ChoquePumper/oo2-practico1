@@ -74,6 +74,22 @@ class CasosDeTest {
 	// Un participante intenta inscribirse fuera del rango de inscripción.
 	@Test
 	void fueraDeRango() {
+		LocalDateTime fecha_inicio = LocalDateTime.of(2023, 01, 18, 0, 0, 0);
+		LocalDateTime fecha_fin = LocalDateTime.of(2023, 01, 26, 0, 0, 0);
+		Concurso concurso = new Concurso(fecha_inicio, fecha_fin);
 
+		record RecordInscribir(Participante participante, LocalDateTime fecha, boolean resultadoEsperado) {
+
+		}
+		;
+
+		RecordInscribir pruebas[] = {
+				new RecordInscribir(new Participante("JustoAFuera"), LocalDateTime.of(2023, 01, 26, 0, 0, 0), false),
+				new RecordInscribir(new Participante("MuyAntes"), LocalDateTime.of(2023, 01, 17, 23, 59, 59), false), };
+
+		for (RecordInscribir inscripcion : pruebas) {
+			assertEquals(inscribir(concurso, inscripcion.participante(), inscripcion.fecha()),
+					inscripcion.resultadoEsperado());
+		}
 	}
 }
