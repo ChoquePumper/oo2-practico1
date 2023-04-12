@@ -33,10 +33,6 @@ public class ListaComidas implements Iterable<Comida> {
 		this.comidas.add(comida);
 	}
 
-	public Iterator<Comida> iterador() {
-		return comidas.listIterator();
-	}
-
 	@Override
 	public Iterator<Comida> iterator() {
 		return comidas.iterator();

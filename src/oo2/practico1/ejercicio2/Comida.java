@@ -12,6 +12,8 @@ public abstract class Comida {
 		Objects.requireNonNull(nombre);
 		assert !nombre.isBlank() : "El nombre de la comida está en blanco.";
 
+		this.nombre = nombre;
+		this.costo = costo;
 	}
 
 	public float getCosto() {

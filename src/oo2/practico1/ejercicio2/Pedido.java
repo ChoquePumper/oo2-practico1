@@ -6,12 +6,17 @@ public class Pedido {
 
 	private ListaComidas lista_comidas;
 	private TarjetaDeCredito tarjeta;
+
+	private OpcionesPropina opciones_propina;
 //	private float propina;
+	private Propina propina;
 
 	public Pedido() {
 		this.tarjeta = null;
 		this.lista_comidas = new ListaComidas();
 		// this.seleccion_propina = crearListaDePropinas();
+		this.opciones_propina = new OpcionesPropina();
+		this.propina = null;
 	}
 
 	public void agregarAlPedido(Comida comida) {
@@ -31,6 +36,9 @@ public class Pedido {
 //
 //		setPropina(f_propina);
 //	}
+	public void seleccionarPropina(String clave_propina) {
+		this.propina = opciones_propina.get(clave_propina);
+	}
 
 	public float calcularDescuento() {
 		if (tarjeta == null)
@@ -49,7 +57,7 @@ public class Pedido {
 		return descuento_por_tarjeta;
 	}
 
-	public float calcularCosto() {
+	public float calcularCostoSinDescuento() {
 		float suma_costo = 0;
 		ArrayList<Comida> lista = new ArrayList<Comida>();
 		lista.addAll(lista_comidas.soloBebidas());
@@ -59,9 +67,15 @@ public class Pedido {
 		return suma_costo;
 	}
 
+	public float calcularCosto() {
+		return calcularCostoSinDescuento() - calcularDescuento() + calcularPropina();
+	}
+
 	public float calcularPropina() {
 		// TODO: implementar
-		return 0;
+		if (propina == null)
+			throw new RuntimeException("No se seleccionó propina.");
+		return propina.calcular(calcularCostoSinDescuento() - calcularDescuento());
 	}
 
 //	private void setPropina(float porcentaje) {
