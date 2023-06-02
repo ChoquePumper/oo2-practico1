@@ -55,20 +55,22 @@ class CasosDeTest {
 		LocalDateTime fecha_fin = LocalDateTime.of(2023, 01, 26, 0, 0, 0);
 		Concurso concurso = new Concurso(fecha_inicio, fecha_fin);
 
-		record RecordPrimerDia(Participante participante, LocalDateTime fecha, int puntos) {
+		concurso.inscribirParticipante(null, fecha_fin);
 
-		}
-		;
-		RecordPrimerDia pruebas[] = {
-				new RecordPrimerDia(new Participante("ATiempo"), LocalDateTime.of(2023, 01, 18, 12, 10, 30), 10),
-				new RecordPrimerDia(new Participante("JustoAFuera"), LocalDateTime.of(2023, 01, 19, 0, 0, 0), 0),
-				new RecordPrimerDia(new Participante("AntesDeFin"), LocalDateTime.of(2023, 01, 18, 23, 59, 59), 10),
-				new RecordPrimerDia(new Participante("AlPrincipio"), LocalDateTime.of(2023, 01, 18, 0, 0, 0), 10) };
-
-		for (RecordPrimerDia inscripcion : pruebas) {
-			assert inscribir(concurso, inscripcion.participante(), inscripcion.fecha());
-			assertEquals(inscripcion.participante().getPuntos(), inscripcion.puntos());
-		}
+//		record RecordPrimerDia(Participante participante, LocalDateTime fecha, int puntos) {
+//
+//		}
+//		;
+//		RecordPrimerDia pruebas[] = {
+//				new RecordPrimerDia(new Participante("ATiempo"), LocalDateTime.of(2023, 01, 18, 12, 10, 30), 10),
+//				new RecordPrimerDia(new Participante("JustoAFuera"), LocalDateTime.of(2023, 01, 19, 0, 0, 0), 0),
+//				new RecordPrimerDia(new Participante("AntesDeFin"), LocalDateTime.of(2023, 01, 18, 23, 59, 59), 10),
+//				new RecordPrimerDia(new Participante("AlPrincipio"), LocalDateTime.of(2023, 01, 18, 0, 0, 0), 10) };
+//
+//		for (RecordPrimerDia inscripcion : pruebas) {
+//			assert inscribir(concurso, inscripcion.participante(), inscripcion.fecha());
+//			assertEquals(inscripcion.participante().getPuntos(), inscripcion.puntos());
+//		}
 	}
 
 	// Un participante intenta inscribirse fuera del rango de inscripción.

@@ -37,12 +37,12 @@ public class Concurso {
 		// [29/03/2023] TODO: Enviar mail aquí? Sí. (si puede grabar)
 	}
 
-	public boolean enPrimerDia(LocalDateTime fecha) {
+	boolean enPrimerDia(LocalDateTime fecha) {
 		// fechaDeInicio <= fecha < cacheFechaLimitePrimerDia
 		return (!fecha.isBefore(fechaDeInicioInscripcion)) && fecha.isBefore(cacheFechaLimitePrimerDia);
 	}
 
-	public boolean enElPeriodoDeInscripcion(LocalDateTime fecha) {
+	boolean enElPeriodoDeInscripcion(LocalDateTime fecha) {
 		// fechaDeInicio <= fecha < fechaDeFin
 		return (!fecha.isBefore(fechaDeInicioInscripcion)) && fecha.isBefore(fechaDeFinInscripcion);
 	}
