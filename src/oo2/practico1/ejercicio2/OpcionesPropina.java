@@ -16,6 +16,7 @@ public class OpcionesPropina {
 		this.mapa_valores.put(opciones_posibles.PROPINA_10PC.toString(), new Propina(10));
 	}
 
+	// Este método puede estar en una interfaz.
 	public Propina get(String clave) {
 		if (!this.mapa_valores.containsKey(clave))
 			throw new RuntimeException("No existe propina para la clave " + clave);
