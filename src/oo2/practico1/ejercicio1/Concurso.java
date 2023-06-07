@@ -8,6 +8,7 @@ import oo2.practico1.ejercicio1.exceptions.FueraDeTerminoException;
 
 public class Concurso {
 
+	private String id;
 	private ArrayList<Participante> participantes;
 	private LocalDateTime fechaDeInicioInscripcion;
 	private LocalDateTime fechaDeFinInscripcion;
@@ -15,13 +16,19 @@ public class Concurso {
 	// Cache
 	private LocalDateTime cacheFechaLimitePrimerDia;
 
-	public Concurso(LocalDateTime fechaDeInicio, LocalDateTime fechaDeFin, ProveedorFecha proveedor_fecha) {
+	public Concurso(String id, LocalDateTime fechaDeInicio, LocalDateTime fechaDeFin, ProveedorFecha proveedor_fecha) {
+		this.id = procesarString(id);
 		this.fechaDeInicioInscripcion = fechaDeInicio;
 		this.fechaDeFinInscripcion = fechaDeFin;
 		this.participantes = new ArrayList<Participante>();
 		this.proveedor_fecha = proveedor_fecha;
 
 		this.cacheFechaLimitePrimerDia = fechaDeInicio.plusDays(1);
+	}
+
+	private String procesarString(String s) {
+		Objects.requireNonNull(s);
+		return s.trim();
 	}
 
 	private void agregarParticipante(Participante participante) {
