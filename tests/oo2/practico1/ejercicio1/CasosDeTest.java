@@ -56,13 +56,26 @@ class CasosDeTest {
 		LocalDateTime fecha_fin = LocalDateTime.of(2023, 01, 26, 0, 0, 0);
 		Concurso concurso = new Concurso(fecha_inicio, fecha_fin, proveedor_fecha);
 
+		Participante participante_en_1er_dia = new Participante("En Primer Dia");
+		Participante otro_participante = new Participante("Otro");
+
 		try {
-			concurso.inscribirParticipante(null);
+			// Fecha y hora dentro del primer dia.
+			proveedor_fecha.setFecha(LocalDateTime.of(2023, 01, 18, 11, 00, 00));
+			concurso.inscribirParticipante(participante_en_1er_dia);
+			// Otra fecha.
+			proveedor_fecha.setFecha(LocalDateTime.of(2023, 01, 19, 18, 00, 00));
+			concurso.inscribirParticipante(otro_participante);
 		} catch (FueraDeTerminoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			fail(e);
 		}
+
+		// En el primer dia de inscripción, el participante suma 10 puntos.
+		assertEquals(10, participante_en_1er_dia.getPuntos());
+		// No suma puntos en cualquier otro día.
+		assertEquals(0, otro_participante.getPuntos());
 
 //		record RecordPrimerDia(Participante participante, LocalDateTime fecha, int puntos) {
 //
@@ -86,7 +99,7 @@ class CasosDeTest {
 		FechaTest proveedor_fecha = new FechaTest();
 		LocalDateTime fecha_inicio = LocalDateTime.of(2023, 01, 18, 0, 0, 0);
 		LocalDateTime fecha_fin = LocalDateTime.of(2023, 01, 26, 0, 0, 0);
-		Concurso concurso = new Concurso(fecha_inicio, fecha_fin);
+		Concurso concurso = new Concurso(fecha_inicio, fecha_fin, proveedor_fecha);
 
 		record RecordInscribir(Participante participante, LocalDateTime fecha, boolean resultadoEsperado) {
 
