@@ -6,7 +6,6 @@ public class PlatoPrincipal extends Comida {
 
 	public PlatoPrincipal(String nombre, float costo) {
 		super(nombre, costo);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

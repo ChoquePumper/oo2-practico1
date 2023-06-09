@@ -6,7 +6,6 @@ public class Bebida extends Comida {
 
 	public Bebida(String nombre, float costo) {
 		super(nombre, costo);
-		// TODO Auto-generated constructor stub
 	}
 
 	void soloBebidas(List<Comida> lista) {

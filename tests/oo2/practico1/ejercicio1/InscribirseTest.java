@@ -1,5 +1,7 @@
 package oo2.practico1.ejercicio1;
 
+// Este archivo solo fue creado para hacer algunos tests antes de prueba sobre los métodos de Concurso.
+
 import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDateTime;
